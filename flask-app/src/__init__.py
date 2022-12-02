@@ -32,7 +32,7 @@ def create_app():
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(views,       url_prefix='/classic')
-    app.register_blueprint(CustomerHome,   url_prefix='/CustomerProduct')
+    app.register_blueprint(CustomerHome,   url_prefix='/CustomerHome')
     app.register_blueprint(CustomerProduct,    url_prefix='/CustomerProduct')
     app.register_blueprint(brands,    url_prefix='/brands')
     return app
