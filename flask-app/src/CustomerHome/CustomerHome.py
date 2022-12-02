@@ -2,12 +2,12 @@ from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
-customers = Blueprint('customers', __name__)
+CustomerHome = Blueprint('CustomerHome', __name__)
 
 # Customer's Dashboard
 
 #Favorites
-@customers.route('/Dashboard/Favorites<id>', methods=['GET'])
+@CustomerHome.route('/Dashboard/Favorites<id>', methods=['GET'])
 def get_favorites(id):
     cursor = db.get_db().cursor()
     cursor.execute(f'SELECT p.Name, p.price \
@@ -26,7 +26,7 @@ def get_favorites(id):
     return the_response
 
 #Already Tried
-@customers.route('/Dashboard/AlreadyTried<id>', methods=['GET'])
+@CustomerHome.route('/Dashboard/AlreadyTried<id>', methods=['GET'])
 def get_tried(id):
     cursor = db.get_db().cursor()
     cursor.execute(f'SELECT  p.Name, p.price \

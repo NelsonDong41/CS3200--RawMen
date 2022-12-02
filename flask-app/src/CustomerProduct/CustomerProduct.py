@@ -2,10 +2,10 @@ from flask import Blueprint, request, jsonify, make_response
 import json
 from src import db
 
-products = Blueprint('products', __name__)
+CustomerProduct = Blueprint('CustomerProduct', __name__)
 
 #display the ramen<ramen_id>.
-@products.route('/ramen<ramen_id>', methods=["GET"])
+@CustomerProduct.route('/ramen<ramen_id>', methods=["GET"])
 def get_ramen(ramen_id):
     cursor = db.get_db().cursor()
     cursor.execute(f'SELECT * \
@@ -25,7 +25,7 @@ def get_ramen(ramen_id):
 
 
 # Get all the products from the database
-@products.route('/', methods=['GET'])
+@CustomerProduct.route('/', methods=['GET'])
 def get_products():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -51,7 +51,7 @@ def get_products():
     return jsonify(json_data)
 
 # get the top 5 products from the database
-@products.route('/top5products')
+@CustomerProduct.route('/top5products')
 def get_most_pop_products():
     cursor = db.get_db().cursor()
     query = '''
