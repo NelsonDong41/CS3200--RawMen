@@ -87,7 +87,8 @@ create table Invoice (
 	invoice_id INT PRIMARY KEY NOT NULL,
 	date_bought DATE,
 	date_received DATE,
-	total DECIMAL(7,2)
+	total DECIMAL(7,2),
+  order_country VARCHAR(50)
 );
 
 -- INVOICE LINE
@@ -530,3 +531,5 @@ insert into Preferred(customer_id, details_id) values (15,4);
 insert into Preferred(customer_id, details_id) values (11,5);
 insert into Preferred(customer_id, details_id) values (10,1);
 insert into Preferred(customer_id, details_id) values (5,14);
+
+-- 
