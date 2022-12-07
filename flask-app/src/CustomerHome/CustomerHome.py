@@ -6,6 +6,24 @@ CustomerHome = Blueprint('CustomerHome', __name__)
 
 # Customer's Dashboard
 
+# Get Customer Names and ids for Users to Select
+@CustomerHome.route('/Dashboard/Select')
+def get_three_users():
+    cursor = db.get_db().cursor()
+    cursor.execute(f'SELECT c.first_name, c.id \
+    FROM Customer c \
+    ORDER BY id \
+    LIMIT 3')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 #Favorites
 @CustomerHome.route('/Dashboard/Favorites<id>', methods=['GET'])
 def get_favorites(id):
