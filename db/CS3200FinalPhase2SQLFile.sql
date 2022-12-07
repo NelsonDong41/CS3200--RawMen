@@ -12,8 +12,10 @@ create table College(
 	country VARCHAR(50)
 );
 
+
+-- CUSTOMERS
 create table Customer (
-	id VARCHAR(2) PRIMARY KEY NOT NULL,
+	id INT PRIMARY KEY NOT NULL,
 	last_name VARCHAR(50),
 	first_name VARCHAR(50),
 	budget VARCHAR(2),
@@ -42,7 +44,7 @@ create table RamenDetails (
 -- PRODUCT
 create table Product (
 	ramen_id INT PRIMARY KEY NOT NULL,
-	name VARCHAR(50),
+	name VARCHAR(100),
 	origin_country VARCHAR(50),
 	price DECIMAL(4,2),
 	style VARCHAR(50),
@@ -105,7 +107,7 @@ create table InvoiceLine (
 
 -- ALREADY TRIED
 create table AlreadyTried (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	ramen_id INT NOT NULL,
 	PRIMARY KEY (customer_id, ramen_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -114,7 +116,7 @@ create table AlreadyTried (
 
 -- CART
 create table Cart (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	ramen_id INT NOT NULL,
 	PRIMARY KEY (customer_id, ramen_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -123,7 +125,7 @@ create table Cart (
 
 -- FAVORITES
 create table Favorites (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	ramen_id INT NOT NULL,
 	PRIMARY KEY (customer_id, ramen_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -132,7 +134,7 @@ create table Favorites (
 
 -- WISHLIST
 create table Wishlist (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	ramen_id INT NOT NULL,
 	PRIMARY KEY (customer_id, ramen_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -141,7 +143,7 @@ create table Wishlist (
 
 -- FREQUENTLY ORDERED
 create table FrequentlyOrdered (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	ramen_id INT NOT NULL,
 	PRIMARY KEY (customer_id, ramen_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -150,7 +152,7 @@ create table FrequentlyOrdered (
 
 -- PREFERRED
 create table Preferred (
-	customer_id VARCHAR(2) NOT NULL,
+	customer_id INT NOT NULL,
 	details_id INT NOT NULL,
 	PRIMARY KEY (customer_id, details_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer (id),
@@ -736,6 +738,8 @@ insert into Favorites(customer_id, ramen_id) values (5,15);
 insert into Favorites(customer_id, ramen_id) values (12,15);
 insert into Favorites(customer_id, ramen_id) values (17,3);
 insert into Favorites(customer_id, ramen_id) values (1,17);
+insert into Favorites(customer_id, ramen_id) values (1,1);
+insert into Favorites(customer_id, ramen_id) values (1,15);
 
 -- wishlist definitions
 insert into Wishlist(customer_id, ramen_id) values (15,7);

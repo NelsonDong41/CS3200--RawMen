@@ -24,14 +24,15 @@ def get_ramen(ramen_id):
 
 
 
-# Get all the products from the database
+# Get all the products from the database for the search bar
 @CustomerProduct.route('/', methods=['GET'])
 def get_products():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('select * from Product')
+    cursor.execute(f'select p.name as label, p.ramen_id as value \
+        from Product p')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
