@@ -24,7 +24,7 @@ def get_ramen(ramen_id):
 
 
 
-# Get all the products from the database
+# Get all the products from the database for the search bar
 @CustomerProduct.route('/', methods=['GET'])
 def get_products():
     # get a cursor object from the database
