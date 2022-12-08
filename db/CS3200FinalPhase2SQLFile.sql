@@ -28,7 +28,7 @@ create table Customer (
 -- BRAND
 create table Brand (
 	id INT PRIMARY KEY NOT NULL,
-	name VARCHAR(50),
+	brand_name VARCHAR(50),
 	country VARCHAR(50)
 );
 
@@ -204,26 +204,26 @@ insert into Customer (id, last_name, first_name, budget, country, college_name) 
 insert into Customer (id, last_name, first_name, budget, country, college_name) values (20, 'Dinsale', 'Corry', 88, 'China', 'Aarhus University');
 
 -- brand definitions
-insert into Brand (id, name, country) values (1, 'MIT', 'Taiwan');
-insert into Brand (id, name, country) values (2, 'Sapporo Ichiban', 'United States');
-insert into Brand (id, name, country) values (3, 'Binh Tay', 'Vietnam');
-insert into Brand (id, name, country) values (4, 'Charming Couple', 'Taiwan');
-insert into Brand (id, name, country) values (5, 'immi', 'United States');
-insert into Brand (id, name, country) values (6, 'Nan Chuan Dao Sheng', 'China');
-insert into Brand (id, name, country) values (7, 'Naked', 'UK');
-insert into Brand (id, name, country) values (8, 'Sapporo Ichiban', 'Japan');
-insert into Brand (id, name, country) values (9, 'Red Chef', 'Malaysia');
-insert into Brand (id, name, country) values (10, 'immi', 'United States');
-insert into Brand (id, name, country) values (11, 'Acecook', 'Japan');
-insert into Brand (id, name, country) values (12, 'Hi Lai Foods', 'Taiwan');
-insert into Brand (id, name, country) values (13, 'Nissin', 'Japan');
-insert into Brand (id, name, country) values (14, 'Myojo', 'Japan');
-insert into Brand (id, name, country) values (15, 'Best Wok', 'Indonesia');
-insert into Brand (id, name, country) values (16, 'Dara/Ciptarasa', 'Indonesia');
-insert into Brand (id, name, country) values (17, 'Best Wok', 'Indonesia');
-insert into Brand (id, name, country) values (18, 'Dara/Ciptarasa', 'Indonesia');
-insert into Brand (id, name, country) values (19, 'Best Wok', 'Indonesia');
-insert into Brand (id, name, country) values (20, 'Nongshim', 'United States');
+insert into Brand (id, brand_name, country) values (1, 'MIT', 'Taiwan');
+insert into Brand (id, brand_name, country) values (2, 'Sapporo Ichiban', 'United States');
+insert into Brand (id, brand_name, country) values (3, 'Binh Tay', 'Vietnam');
+insert into Brand (id, brand_name, country) values (4, 'Charming Couple', 'Taiwan');
+insert into Brand (id, brand_name, country) values (5, 'immi', 'United States');
+insert into Brand (id, brand_name, country) values (6, 'Nan Chuan Dao Sheng', 'China');
+insert into Brand (id, brand_name, country) values (7, 'Naked', 'UK');
+insert into Brand (id, brand_name, country) values (8, 'Mr. HOO', 'United States');
+insert into Brand (id, brand_name, country) values (9, 'Red Chef', 'Malaysia');
+insert into Brand (id, brand_name, country) values (10, 'J-Basket', 'United States');
+insert into Brand (id, brand_name, country) values (11, 'Acecook', 'Japan');
+insert into Brand (id, brand_name, country) values (12, 'Hi Lai Foods', 'Taiwan');
+insert into Brand (id, brand_name, country) values (13, 'Nissin', 'Japan');
+insert into Brand (id, brand_name, country) values (14, 'Myojo', 'Japan');
+insert into Brand (id, brand_name, country) values (15, 'Best Wok', 'Indonesia');
+insert into Brand (id, brand_name, country) values (16, 'Dara/Ciptarasa', 'Indonesia');
+insert into Brand (id, brand_name, country) values (17, 'Vite Ramen', 'United States');
+insert into Brand (id, brand_name, country) values (18, 'MAMA', 'Thailand');
+insert into Brand (id, brand_name, country) values (19, 'iNoodle', 'Taiwan');
+insert into Brand (id, brand_name, country) values (20, 'Nongshim', 'United States');
 
 -- ramen details definitions
 insert into RamenDetails (details_id, spice_level, broth_type, noodle_type, sodium_level) values (1, 2, 'pork', 'ramen', 114);

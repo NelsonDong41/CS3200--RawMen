@@ -10,7 +10,7 @@ brands = Blueprint('brands', __name__)
 @brands.route('/brandsTop<id>', methods=['GET'])
 def get_total_avg(id):
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT * \
+    cursor.execute(f'SELECT SUM(Total) as sum, ROUND(AVG(rating), 2) as avg\
     FROM Invoice i\
     JOIN InvoiceLine i1 on i.invoice_id = i1.invoice_id \
     JOIN Product p on i1.ramen_id = p.ramen_id \
@@ -29,12 +29,12 @@ def get_total_avg(id):
 @brands.route('/brandsSelling<id>', methods=['GET'])
 def get_bottom_selling(id):
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT p.name \
+    cursor.execute(f'SELECT p.name as label, i1.quantity as value \
     FROM Invoice i\
     JOIN InvoiceLine i1 on i.invoice_id = i1.invoice_id \
     JOIN Product p on i1.ramen_id = p.ramen_id \
     WHERE p.brand_id = {id} \
-    ORDER BY i1.quantity \
+    ORDER BY i1.quantity DESC \
     LIMIT 3')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -50,12 +50,13 @@ def get_bottom_selling(id):
 @brands.route('/brandsLocation<id>', methods=['GET'])
 def get_bottom_location(id):
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT i.order_country \
+    cursor.execute(f'SELECT * \
+    FROM (SELECT i.order_country \
     FROM Invoice i\
     JOIN InvoiceLine i1 on i.invoice_id = i1.invoice_id \
     JOIN Product p on i1.ramen_id = p.ramen_id \
     WHERE p.brand_id = {id} \
-    ORDER BY i1.quantity \
+    ORDER BY i1.quantity DESC) x \
     LIMIT 3')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -71,12 +72,12 @@ def get_bottom_location(id):
 @brands.route('/brandsRating<id>', methods=['GET'])
 def get_bottom_rating(id):
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT p.name \
+    cursor.execute(f'SELECT p.name as label, p.rating as value\
     FROM Invoice i\
     JOIN InvoiceLine i1 on i.invoice_id = i1.invoice_id \
     JOIN Product p on i1.ramen_id = p.ramen_id \
     WHERE p.brand_id = {id} \
-    ORDER BY i1.quantity \
+    ORDER BY p.rating DESC \
     LIMIT 3')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -92,7 +93,7 @@ def get_bottom_rating(id):
 @brands.route('/', methods=['GET'])
 def get_brands():
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT * FROM Competes')
+    cursor.execute(f'SELECT brand_name as label, id as value FROM Brand')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

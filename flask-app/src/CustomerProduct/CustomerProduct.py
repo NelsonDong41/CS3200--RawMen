@@ -11,6 +11,7 @@ def get_ramen(ramen_id):
     cursor.execute(f'SELECT * \
     FROM Product p\
     JOIN RamenDetails r ON r.details_id = p.details_id \
+    JOIN Brand b ON p.brand_id = b.id \
     WHERE p.ramen_id = {ramen_id}')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
