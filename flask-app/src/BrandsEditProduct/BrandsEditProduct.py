@@ -4,4 +4,4 @@ from src import db
 
 BrandsEditProduct = Blueprint('BrandsEditProduct', __name__)
 
-# Brand's Edit Product page
+# Brand's Edit Product page hi
