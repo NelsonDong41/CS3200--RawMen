@@ -25,14 +25,12 @@ def get_name(critic_id):
 @CriticHome.route('/<critic_id>/company', methods=["GET"])
 def get_company(critic_id):
     cursor = db.get_db().cursor()
-    query = ''' SELECT publication_company \
+    cursor.execute(f'SELECT publication_company \
                     FROM (SELECT publication_company, MAX(n) \
                             FROM (SELECT publication_company, COUNT(Critique.critique_id) as n \
                                     FROM Critic JOIN Critique ON (Critic.critic_id = Critique.critic_id) \
                                     WHERE Critic.critic_id = {critic_id} \
-                                    GROUP BY publication_company))
-    '''
-    cursor.execute(query)
+                                    GROUP BY publication_company))')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
