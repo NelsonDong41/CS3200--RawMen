@@ -93,7 +93,7 @@ def get_bottom_rating(id):
 @brands.route('/', methods=['GET'])
 def get_brands():
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT brand_name as label, id as value FROM Brand')
+    cursor.execute(f'SELECT name as label, id as value FROM Brand')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
