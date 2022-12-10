@@ -12,8 +12,7 @@ def get_three_users():
     cursor = db.get_db().cursor()
     cursor.execute(f'SELECT c.first_name, c.id \
     FROM Customer c \
-    ORDER BY id \
-    LIMIT 3')
+    ORDER BY id')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

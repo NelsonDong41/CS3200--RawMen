@@ -4,6 +4,21 @@ from src import db
 
 CriticHome = Blueprint('CriticHome', __name__)
 
+@CriticHome.route('/', methods=["GET"])
+def get_all ():
+    cursor = db.get_db().cursor()
+    cursor.execute(f'SELECT Critic.critic_id as label, Critic.critic_id as value \
+    FROM Critic')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 #display the first and last name of the critic with id <critic_id>.
 @CriticHome.route('/<critic_id>/name', methods=["GET"])
 def get_name(critic_id):
