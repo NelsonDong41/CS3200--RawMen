@@ -10,7 +10,7 @@ CustomerHome = Blueprint('CustomerHome', __name__)
 @CustomerHome.route('/Dashboard/Select')
 def get_three_users():
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT c.first_name, c.id \
+    cursor.execute(f'SELECT c.first_name as label, c.id as id \
     FROM Customer c \
     ORDER BY id')
     row_headers = [x[0] for x in cursor.description]
