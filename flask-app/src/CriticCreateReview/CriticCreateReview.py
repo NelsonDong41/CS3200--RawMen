@@ -50,5 +50,5 @@ def no_crit():
     cursor = db.get_db().cursor()
     cursor.execute(f'INSERT INTO Critique (critique_id, rating, review, publication_company, critic_id, ramen_id) VALUES (1, {rating}, "{review}", "{publication_company}", {critic_id}, {ramen_id})')
     cursor.connection.commit()
-    return "successfully posted"
+    return "posted successfully"
 
