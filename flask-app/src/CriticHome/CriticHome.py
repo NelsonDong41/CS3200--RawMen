@@ -60,7 +60,7 @@ def get_company(critic_id):
 @CriticHome.route('/<critic_id>/past_reviews', methods=["GET"])
 def get_past_reviews(critic_id):
     cursor = db.get_db().cursor()
-    cursor.execute(f'SELECT Critique.publication_company, Critique.ramen_id, Product.name \
+    cursor.execute(f'SELECT Critique.publication_company, Critique.ramen_id, Product.name, Critique.review \
     FROM Critic \
     JOIN Critique ON (Critic.critic_id = Critique.critic_id) \
     JOIN Product on (Critique.ramen_id = Product.ramen_id) \

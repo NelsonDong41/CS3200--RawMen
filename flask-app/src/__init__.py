@@ -31,6 +31,7 @@ def create_app():
     from src.brands.brands import brands
     from src.CriticHome.CriticHome import CriticHome
     from src.Cart.Cart import Cart
+    from src.CriticCreateReview.CriticCreateReview import CriticCreateReview
 
     # Register the routes that we just imported so they can be properly handled
     app.register_blueprint(views,       url_prefix='/classic')
@@ -39,4 +40,5 @@ def create_app():
     app.register_blueprint(brands,    url_prefix='/brands')
     app.register_blueprint(CriticHome, url_prefix = '/CriticHome')
     app.register_blueprint(Cart, url_prefix = '/cart')
+    app.register_blueprint(CriticCreateReview, url_prefix = '/CriticCreateReview')
     return app
