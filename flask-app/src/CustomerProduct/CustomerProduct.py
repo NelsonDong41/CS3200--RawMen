@@ -80,3 +80,23 @@ def get_most_pop_products():
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+# Add to Cart
+@CustomerProduct.route('/addtocart', methods=['POST'])
+def add_to_cart():
+    ramen_id = request.form['ramen_id']
+    customer_id = request.form['customer_id']
+    cursor = db.get_db().cursor()
+    cursor.execute(f'INSERT INTO Cart (customer_id, ramen_id) VALUES ({customer_id}, {ramen_id})')
+    cursor.connection.commit()
+    return "posted successfully"
+
+# Add to Favs
+@CustomerProduct.route('/addtofavs', methods=['POST'])
+def add_to_favs():
+    ramen_id = request.form['ramen_id']
+    customer_id = request.form['customer_id']
+    cursor = db.get_db().cursor()
+    cursor.execute(f'INSERT INTO Favorites (customer_id, ramen_id) VALUES ({customer_id}, {ramen_id})')
+    cursor.connection.commit()
+    return "posted successfully"
