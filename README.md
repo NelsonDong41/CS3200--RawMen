@@ -41,4 +41,4 @@ Brands have one screen– a home screen. It shows brand statistics:
 
 The user can navigate to any of the pages via the navigation bar at the top, but the first page landed on is the user type selection screen. Upon selection, the user is automatically navigated to the home page of the persona they selected.
 
-On each page, there is a selection field to select the user's ID.
+On each page, there is a selection field to select the user's ID, automatically updating the data on the page to reflect the data for the user with that ID number.
